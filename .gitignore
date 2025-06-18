@@ -1,5 +1,12 @@
-# 忽略 IntelliJ IDEA 的项目配置文件夹
-.idea/
+# 忽略 IDEA 工作区相关的个人配置
+.idea/workspace.xml
+.idea/usage.statistics.xml
+.idea/shelf/
+
+# 保留 modules 和 JDK 配置
+!.idea/modules.xml
+!.idea/misc.xml
+*.iml
 #忽略out
 out/
 
