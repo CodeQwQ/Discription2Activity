@@ -1,4 +1,5 @@
 // 这个文件主要编写，各个规则到活动图xmi文件的转化输出
+package java.rules;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;

@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: org.eclipse.uml2:org.eclipse.uml2.uml:5.0.1.v20140910-1354">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../../../../Maven/repository/org/eclipse/uml2/org.eclipse.uml2.uml/5.0.1.v20140910-1354/org.eclipse.uml2.uml-5.0.1.v20140910-1354.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$PROJECT_DIR$/../../../../Maven/repository/org/eclipse/uml2/org.eclipse.uml2.uml/5.0.1.v20140910-1354/org.eclipse.uml2.uml-5.0.1.v20140910-1354-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/../../../../Maven/repository/org/eclipse/uml2/org.eclipse.uml2.uml/5.0.1.v20140910-1354/org.eclipse.uml2.uml-5.0.1.v20140910-1354-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
