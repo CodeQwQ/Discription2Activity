@@ -1,4 +1,4 @@
-package java.rules;
+package project.rules;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -32,8 +32,8 @@ public class ActivityDiagramGenerator {
         OpaqueAction endAction = factory.createOpaqueAction();
         endAction.setName("End Action");
 
-        activity.getNodes().add(startAction);
-        activity.getNodes().add(endAction);
+        activity.getOwnedNodes().add(startAction);
+        activity.getOwnedNodes().add(endAction);
 
         // 创建一条控制流连接两个节点
         ControlFlow flow = factory.createControlFlow();
