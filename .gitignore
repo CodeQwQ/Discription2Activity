@@ -9,6 +9,8 @@
 *.iml
 #忽略out
 out/
+#忽略target
+target/
 
 # 忽略测试的xmi文件
 *.xmi
