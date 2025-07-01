@@ -35,7 +35,7 @@
             <artifactId>org.eclipse.uml2.uml</artifactId>
             <version>5.5.0</version>
             <scope>system</scope>
-            <systemPath>E:/jar/org.eclipse.uml2.uml_5.5.0.v20210228-1829.jar</systemPath>
+            <systemPath>${project.basedir}/jar/org.eclipse.uml2.uml_5.5.0.v20210228-1829.jar</systemPath>
         </dependency>
 
         <!-- EMF Core -->
@@ -62,7 +62,7 @@
             <artifactId>org.eclipse.uml2.uml.resources</artifactId>
             <version>5.5.0</version>
             <scope>system</scope>
-            <systemPath>E:/jar/org.eclipse.uml2.uml.resources_5.5.0.v20210228-1829.jar</systemPath>
+            <systemPath>${project.basedir}/jar/org.eclipse.uml2.uml.resources_5.5.0.v20210228-1829.jar</systemPath>
         </dependency>
 
         <dependency>
@@ -70,7 +70,7 @@
             <artifactId>org.eclipse.uml2.common</artifactId>
             <version>5.5.0</version>
             <scope>system</scope>
-            <systemPath>E:/jar/org.eclipse.uml2.common_2.5.0.v20210228-1829.jar</systemPath>
+            <systemPath>${project.basedir}/jar/org.eclipse.uml2.common_2.5.0.v20210228-1829.jar</systemPath>
         </dependency>
 
         <dependency>
@@ -78,7 +78,7 @@
             <artifactId>org.eclipse.uml2.types</artifactId>
             <version>5.5.0</version>
             <scope>system</scope>
-            <systemPath>E:/jar/org.eclipse.uml2.types_2.5.0.v20210228-1829.jar</systemPath>
+            <systemPath>${project.basedir}/jar/org.eclipse.uml2.types_2.5.0.v20210228-1829.jar</systemPath>
         </dependency>
 
         <dependency>
@@ -86,7 +86,7 @@
             <artifactId>org.eclipse.uml2.uml.profile.standard</artifactId>
             <version>5.5.0</version>
             <scope>system</scope>
-            <systemPath>E:/jar/org.eclipse.uml2.uml.profile.standard_1.5.0.v20210228-1829.jar</systemPath>
+            <systemPath>${project.basedir}/jar/org.eclipse.uml2.uml.profile.standard_1.5.0.v20210228-1829.jar</systemPath>
         </dependency>
 
         <dependency>
