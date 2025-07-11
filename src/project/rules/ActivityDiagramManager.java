@@ -324,8 +324,10 @@ public class ActivityDiagramManager {
         URI outputURI = URI.createFileURI(outputFile.getAbsolutePath());
         Resource resource = resourceSet.createResource(outputURI);
         resource.getContents().add(model);
-        resource.save(Collections.emptyMap());
-        
+        // 设置 UTF-8 编码
+        Map<Object, Object> options = new HashMap<>();
+        options.put(org.eclipse.emf.ecore.xmi.XMLResource.OPTION_ENCODING, "UTF-8");
+        resource.save(options);
         System.out.println("✅ 活动图已保存为: " + outputFile.getAbsolutePath());
     }
     
