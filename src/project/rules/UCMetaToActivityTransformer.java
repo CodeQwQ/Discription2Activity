@@ -120,51 +120,54 @@ public class UCMetaToActivityTransformer {
     }
     
     /**
-     * 规则1.2.1c：处理条件检查句
+     * 规则1.2.1c：处理条件检查句（修复版本）
      */
     private String processConditionCheckSentence(ConditionCheckSentence sentence, String previousNodeId) {
         // 创建CallOperationAction用于条件检查
         String checkNodeId = "check_" + sentence.getId();
         CallOperationAction checkAction = manager.createCallOperationAction(checkNodeId, sentence.getContent());
-        
+
         // 连接到前一个节点
         if (previousNodeId != null) {
             manager.createControlFlow("flow_" + nodeCounter++, previousNodeId, checkNodeId, null);
         }
-        
+
         // 创建DecisionNode
         String decisionNodeId = "decision_" + sentence.getId();
         DecisionNode decisionNode = manager.createDecisionNode(decisionNodeId);
-        
+
         // 连接检查节点到决策节点
         manager.createControlFlow("flow_" + nodeCounter++, checkNodeId, decisionNodeId, null);
-        
+
         // 处理备选流
         String mergeNodeId = "merge_" + sentence.getId();
         MergeNode mergeNode = manager.createMergeNode(mergeNodeId);
-        
+
         if (generateDetailedDiagram) {
             // 详细图：递归处理备选流中的句子
             String lastAlternativeNodeId = decisionNodeId;
             for (Sentence altSentence : sentence.getAlternativeFlow()) {
                 lastAlternativeNodeId = processSentence(altSentence, lastAlternativeNodeId);
             }
-            // 连接备选流到合并节点
-            manager.createControlFlow("flow_" + nodeCounter++, lastAlternativeNodeId, mergeNodeId, "alternative");
+
+            // 关键修复：备选流处理完后，应该回到验证步骤重新检查
+            // 而不是直接到MergeNode
+            manager.createControlFlow("flow_retry_" + nodeCounter++, lastAlternativeNodeId, checkNodeId, "retry");
         } else {
             // 概览图：使用CallBehaviorAction
             String altActionId = "alt_behavior_" + sentence.getId();
             CallBehaviorAction altAction = manager.createCallBehaviorAction(altActionId, "Alternative Flow");
             manager.createControlFlow("flow_" + nodeCounter++, decisionNodeId, altActionId, "alternative");
-            manager.createControlFlow("flow_" + nodeCounter++, altActionId, mergeNodeId, null);
+            // 修复：概览图也应该回到检查节点
+            manager.createControlFlow("flow_retry_" + nodeCounter++, altActionId, checkNodeId, "retry");
         }
-        
-        // 主流程继续
-        manager.createControlFlow("flow_" + nodeCounter++, decisionNodeId, mergeNodeId, "main");
-        
+
+        // 主流程继续：只有验证成功才到MergeNode
+        manager.createControlFlow("flow_success_" + nodeCounter++, decisionNodeId, mergeNodeId, "success");
+
         // 规则2.3a：为条件检查句添加InputPin
         manager.addInputPin(checkNodeId, "condition_input", "Boolean");
-        
+
         return mergeNodeId;
     }
     
